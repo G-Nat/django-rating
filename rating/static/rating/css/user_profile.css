@@ -1,0 +1,45 @@
+.user_ratings .rating_item {
+  margin-bottom: 10px;
+}
+.user_ratings .rating_item .no_padding {
+  padding: 0;
+}
+.user_ratings .rating_item img {
+  float: left;
+  margin-right: 10px;
+}
+.user_ratings .rating_item .details {
+  padding: 10px 0 10px 10px;
+}
+.user_ratings .rating_item .details a .titel {
+  font-family: "Open Sans";
+  margin-top: 0;
+  padding-top: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #1f1f1f;
+}
+.user_ratings .rating_item .details a .titel span {
+  font-size: 16px;
+}
+.user_ratings .rating_item .details .comment span {
+  font-weight: bold;
+  color: #515151;
+  display: block;
+}
+.user_ratings .rating_item .details .comment_input {
+  max-width: 400px;
+}
+.user_ratings .rating_item .details .post_comment {
+  margin-top: 5px;
+}
+.user_ratings .rating_item .details .price {
+  font-size: 15px;
+}
+.user_ratings .rating_item .details .glyphicon {
+  font-size: 20px;
+  color: #fd5c28;
+}
+.user_ratings .rating_item .details .glyphicon-star-empty {
+  color: #fea98d;
+}

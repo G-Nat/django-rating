@@ -1,0 +1,12 @@
+{% load sekizai_tags %}
+
+{% addtoblock "rating_js" %}
+    <script src="{{ STATIC_URL }}rating/js/likes.js"></script>
+{% endaddtoblock %}
+
+{% addtoblock "rating_css" %}
+	<link href="{{ STATIC_URL }}rating/css/likes.css" rel="stylesheet">
+{% endaddtoblock %}
+
+<i class="like fa fa-thumbs-o-up fa-3x pull-right" data-id="{{ id }}" data-app-label="{{ app_label }}" data-model="{{ model }}"></i>
+<div class="like_feedback pull-right"></div>

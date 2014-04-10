@@ -1,0 +1,40 @@
+{% load sekizai_tags thumbnail %}
+
+{% for element in products %}
+	{% for rating in user_ratings %}
+		{% if rating.object_id == element.id %}
+			<div class="row">
+				<div class="col-md-12">
+					<div class="rating_item bg-success">
+						<div class="col-md-2 no_padding">
+							<a href="{{ element.get_absolute_url }}">
+								<img src="{% thumbnail element.cover_picture 100x100 crop upscale %}" class="img-responsive">
+							</a>
+						</div>
+						<div class="col-md-10 no_padding">
+							<div class="details">
+								<a href="{{ element.get_absolute_url }}">
+									<h3 class="titel">{{ element.name }} | <span class="price">{{ element.price }} CHF</span></h3>
+								</a>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% empty %}
+		{% if forloop.counter0 == 0 %}
+
+			<div class="row">
+				<div class="rating_item bg-error">
+					<div class="col-md-12">
+						<p>Keine Einträge vorhanden!</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+
+		{% endif %}
+	{% endfor %}
+{% endfor %}

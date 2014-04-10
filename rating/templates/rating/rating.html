@@ -1,0 +1,10 @@
+{% if user.is_authenticated %}
+	{% include "rating/likes.html" with model=model app_label=app_label id=id %}
+	{% include "rating/stars.html" with model=model app_label=app_label id=id %}
+	{% include "rating/comment.html" with model=model app_label=app_label id=id %}
+{% else %}
+	{% include "rating/stars.html" with model=model app_label=app_label id=id %}
+    <blockquote>
+	  <p>Um Kommentare zu sehen und abgeben zu können, müssen Sie sich registrieren.<br><br>Als registrierter User können Sie die Produkte favorisieren!</p>
+	</blockquote>
+{% endif %}

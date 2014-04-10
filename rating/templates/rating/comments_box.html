@@ -1,0 +1,26 @@
+
+    {% for comment in ratings %}
+        {% if comment %}
+            <div class="comments_item">
+                <p class="bg-info">
+                    <span class="label label-primary">{{ comment.user.username }}</span><br>
+                    {{ comment.kommentar }}
+                </p>
+            </div>
+        {% endif %}
+    {% empty %}
+        <p>Keine Kommentare vorhanden!</p>
+    {% endfor %}
+
+
+
+{% if not user_comment %}
+	<form class="comment_form">
+		<textarea class="form-control" rows="3" placeholder="Kommentieren..."></textarea>
+		<button type="submit" class="btn btn-primary comment">Kommentieren</button>
+	</form>
+{% else %}
+	<blockquote>
+	  <p>Du hast schon einen Kommentar abgegeben!<br>Du kannst ihn in deiner Kontoverwaltung bearbeiten!</p>
+	</blockquote>
+{% endif %}

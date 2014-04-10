@@ -1,0 +1,56 @@
+@orange: rgb(240, 60, 2);
+.user_ratings {
+	.rating_item {
+		margin-bottom: 10px;
+		.no_padding {
+			padding: 0;
+		}
+		img {
+			float: left;
+			margin-right: 10px;
+		}
+		.details {
+			padding: 10px 0 10px 10px;
+			a {
+				.titel {
+					font-family: "Open Sans";
+					margin-top: 0;
+					padding-top: 0;
+					font-size: 20px;
+					font-weight: bold;
+					color: #1f1f1f;
+
+					span {
+						font-size: 16px;
+					}
+				}
+			}
+			.comment {
+				span {
+					font-weight: bold;
+					color: #515151;
+					display: block;
+				}
+			}
+			.comment_input {
+				max-width: 400px;
+			}
+			.post_comment {
+				margin-top: 5px;
+			}
+			.price {
+				font-size: 15px;
+			}
+
+			.glyphicon {
+				font-size: 20px;
+				color: lighten(@orange, 10%);;
+			}
+			.glyphicon-star-empty {
+				color: lighten(@orange, 30%);;
+
+			}
+		}
+
+	}
+}

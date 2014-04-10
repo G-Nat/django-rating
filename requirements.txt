@@ -1,0 +1,4 @@
+Django==1.6.2
+django-ipware
+django-sekizai
+git+git://github.com/Wirzi/django-dajaxice.git

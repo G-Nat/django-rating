@@ -1,0 +1,6 @@
+.like {
+  margin-top: -10px;
+}
+.like:active {
+  color: #686868;
+}

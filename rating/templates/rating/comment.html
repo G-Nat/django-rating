@@ -1,0 +1,13 @@
+{% load sekizai_tags %}
+
+{% addtoblock "rating_js" %}
+	<script src="{{ STATIC_URL }}rating/js/comment.js"></script>
+{% endaddtoblock %}
+
+{% addtoblock "rating_css" %}
+	<link href="{{ STATIC_URL }}rating/css/comment.css" rel="stylesheet">
+{% endaddtoblock %}
+
+<div class="comments" data-id="{{ id }}" data-app-label="{{ app_label }}" data-model="{{ model }}">
+	<i class="fa fa-spinner fa-spin" style="font-size:50px;"></i>
+</div>

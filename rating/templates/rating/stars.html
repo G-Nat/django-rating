@@ -1,0 +1,11 @@
+{% load sekizai_tags %}
+
+{% addtoblock "rating_js" %}
+	<script src="{{ STATIC_URL }}rating/js/stars.js"></script>
+{% endaddtoblock %}
+
+{% addtoblock "rating_css" %}
+	<link href="{{ STATIC_URL }}rating/css/stars.css" rel="stylesheet">
+{% endaddtoblock %}
+
+<input style="visibility:hidden;" type="text" class="rating" data-id="{{ id }}" data-app-label="{{ app_label }}" data-model="{{ model }}" />
