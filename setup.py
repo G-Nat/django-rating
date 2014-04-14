@@ -16,8 +16,8 @@ setup(
     packages=find_packages(),
     install_requires=[
         "django==1.6.2",
-        "git+git://github.com/Wirzi/django-dajaxice.git",
         "django-ipware",
+        "django-dajax",
         "django-sekizai",
     ],
 )
