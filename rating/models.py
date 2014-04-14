@@ -6,6 +6,7 @@ from djangocms_text_ckeditor.fields import HTMLField
 from django.utils.translation import gettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 
+
 # User IP Model
 class UserIP(models.Model):
 	ip = models.IPAddressField(unique=True)
@@ -17,7 +18,8 @@ class UserIP(models.Model):
 		verbose_name = _('IP Adresse')
 		verbose_name_plural = _('IP Adressen')
 
-# Bewertung Model
+
+# Bewertungs Model
 class Eintrage(models.Model):
 	content_type = models.ForeignKey(ContentType)
 	object_id = models.PositiveIntegerField()

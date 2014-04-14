@@ -1,7 +1,5 @@
 (function ($) {
-
 	$.fn.comment = function () {
-
         // Init Variablen //
 		var comments = $(".comments");
 		var id = comments.attr("data-id");
@@ -36,9 +34,7 @@
 		}
 		init_comments();
 	};
-
 	$(function () {
 		$(".comment_form").comment();
 	});
-
 }(jQuery));

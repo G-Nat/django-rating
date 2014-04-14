@@ -37,26 +37,19 @@ class GetContent(object):
 	# self ist für automatische Zuweisung zuständig --> general = GetContent(id, model, app_label)
 	def __init__(self, model, app_label, id=0):
 		self.content_type = ContentType.objects.get(app_label=app_label, model=model)
-		print(self.content_type )
 		# Python Model Class
 		self.model_class = self.content_type.model_class()
-		print(self.model_class )
 		# Das ganze Model (COntent Type Model) wird geholt. Es ist nötig zuerst COntentTYpe abzufragen.
 		self.model_type = ContentType.objects.get_for_model(self.model_class)
-		print(self.model_type )
 		if id:
 			# Inhalt vom Objekt = ganzes Row
 			self.content = self.content_type.get_object_for_this_type(id=id)
-			print(self.content )
-		# # Das ganze Model wird geholt.
-		# self.model_type = ContentType.objects.get_for_model(self.content)
-		# print(self.model_type )
 
 
 #### STARS ####
 # Abfrage einer Bewertung
 @dajaxice_register
-# ID, Model und App_label des bewerteten Objekt werden vom Template abgefangen
+# ID, Model und App_label des bewerteten Objekts werden übergeben
 def get_rating(request, id, model, app_label):
 	result = ""
 	counter = 0

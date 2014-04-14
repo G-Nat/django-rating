@@ -10,7 +10,7 @@ setup(
     author=u'Natalia Gerasimenko',
     author_email='natalia.gerasimenko@helmag.ch',
     url='https://github.com/G-Nat/django-rating',
-    long_description=open('README').read(),
+    long_description=open('README.md').read(),
     zip_safe=False,
     include_package_data=True,
     packages=find_packages(),
