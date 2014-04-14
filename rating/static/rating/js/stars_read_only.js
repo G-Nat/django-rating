@@ -17,9 +17,6 @@
 		function clearValue(ratingInput) {
 			var self = $(ratingInput);
 			self.find('[data-value]').removeClass('fa-star').addClass('fa-star-o');
-			self.find('.rating-clear').hide();
-			var input = self.find('input');
-			input.val(input.data('empty-value')).trigger('change');
 		}
 		// Iterate and transform all selected inputs
 		for (element = this.length - 1; element >= 0; element--) {
@@ -76,7 +73,7 @@
 		}
         refresh_stars()
 	};
-	// Auto apply conversion of number fields with class 'rating' into rating-fields
+	// Rating Funktion wird beim Seitenladen ausgeführt.
 	$(function () {
 		$(".rating").rating();
 	});

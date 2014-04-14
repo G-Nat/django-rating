@@ -1,15 +1,18 @@
 {% load sekizai_tags thumbnail rating %}
-
+{#für jedes Produkt#}
 {% for element in products %}
+{#    für jede Bewertung #}
 	{% for rating in user_ratings %}
+{#        Wenn Objekt ID in der Bewertung mit Produkt ID gleich ist#}
 		{% if rating.object_id == element.id %}
 			<div class="row">
 				<div class="col-md-12">
 					<div class="rating_item bg-success">
-{#						<div class="col-md-2 no_padding">#}
-{#							<a href="{{ element.get_absolute_url }}">#}
-{#							</a>#}
-{#						</div>#}
+						<div class="col-md-2 no_padding">
+							<a href="{{ element.get_absolute_url }}">
+								<img src="{% thumbnail element.cover_picture 100x100 crop upscale %}" class="img-responsive">
+							</a>
+						</div>
 						<div class="col-md-12 no_padding">
 							<div class="actions btn-group-vertical pull-right">
 								<button type="button" class="remove_rating btn btn-danger" data-rating-id="{{ rating.id }}"><i class="fa fa-trash-o"></i></button>
@@ -47,7 +50,6 @@
 		{% endif %}
 	{% empty %}
 		{% if forloop.counter0 == 0 %}
-
 			<div class="row">
 				<div class="rating_item bg-error">
 					<div class="col-md-12">
@@ -56,7 +58,6 @@
 					<div class="clearfix"></div>
 				</div>
 			</div>
-
 		{% endif %}
 	{% endfor %}
 {% endfor %}

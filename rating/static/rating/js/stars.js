@@ -52,8 +52,6 @@
 		function clearValue(ratingInput) {
 			var self = $(ratingInput);
 			self.find('[data-value]').removeClass('fa-star').addClass('fa-star-o');
-			var input = self.find('input');
-			input.val(input.data('empty-value')).trigger('change');
 		}
 		// Generierung von rating-input DIV und Sternen
 		var starswrap, i;

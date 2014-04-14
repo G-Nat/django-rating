@@ -35,7 +35,7 @@ Die Rating App benützt *django-sekizai* um Static Files beim Template zu laden.
 Vergessen Sie nicht **model** und **app_label** zu definieren.  Sie sind abhängig von Ihrer Applikation, deren Objekte schlussendlich bewertet werden.
 
 - Achten Sie darauf, dass ein Objekt, das bewertet sein soll, über ein Feld "name" verfügt.
-- Sie benö
+
 
 ## Vorraussetzungen und Abhängigkeiten ##
 - django

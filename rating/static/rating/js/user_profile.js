@@ -55,7 +55,7 @@
 		}
 		refresh_user_ratings();
 	};
-	// User_ratings Funktion wird ausgeführt beim aufrufen von der Profilseite
+	// User_ratings Funktion wird beim Aufrufen der Profilseite ausgeführt
 	$(function () {
 		$(".user_ratings").user_ratings();
 	});

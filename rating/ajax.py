@@ -16,8 +16,8 @@ fehlerliste = {
 	"2": "Du willst zu hoch hinaus!",
 	"3": "Produkt nicht vorhanden!",
 	"4": "Bitte ein Kommentar abgeben!",
-	"5": "Anonyme User können keine Kommentare haben!",
-	"6": "Fehler2",
+	"5": u"Anonyme User können keine Kommentare haben!",
+
 
 }
 
@@ -26,7 +26,7 @@ class GetContent(object):
 	# Hier werden die Daten gespeichert, die bei __init__ rausgefunden werden
 	# Name des Models
 	content_type = ""
-	# ID des bewerteten Objektes
+	# Inhalt vom Objekt = ganzes Row
 	content = ""
 	# Das ganze Model des bewerteten Objektes
 	model_type = ""
@@ -39,7 +39,7 @@ class GetContent(object):
 		self.content_type = ContentType.objects.get(app_label=app_label, model=model)
 		# Python Model Class
 		self.model_class = self.content_type.model_class()
-		# Das ganze Model (COntent Type Model) wird geholt. Es ist nötig zuerst COntentTYpe abzufragen.
+		# Das ganze Model (COntent Type Model) wird geholt. Es ist nötig zuerst CotentType abzufragen.
 		self.model_type = ContentType.objects.get_for_model(self.model_class)
 		if id:
 			# Inhalt vom Objekt = ganzes Row
@@ -53,11 +53,10 @@ class GetContent(object):
 def get_rating(request, id, model, app_label):
 	result = ""
 	counter = 0
-	# GetContent wird aufgerufen und geholte Daten(id, model, app_label) in general Variable gespeichert.
-	# try:
-	general = GetContent(model, app_label, id)
-	# except:
-	# 	return json.dumps({'fehler':fehlerliste['1']})
+	try:
+		general = GetContent(model, app_label, id)
+	except:
+		return json.dumps({'fehler':fehlerliste['1']})
 	# Django Filter = SQL SELECT ... WHERE content_type__pk =
 	ratings = Rating.objects.filter(content_type__pk=general.model_type.id, object_id=general.content.id, sterne__isnull=False)
 	if ratings:
@@ -97,10 +96,14 @@ def get_rating_list(request, ids, model, app_label):
 	return json.dumps({'results': results, "mengen": mengen})
 
 
+# Bewertung setzten
 @dajaxice_register
 def set_rating(request, id, model, app_label, sterne):
 	ip_object = ""
-	general = GetContent(model, app_label, id)
+	try:
+		general = GetContent(model, app_label, id)
+	except:
+		return json.dumps({'fehler':fehlerliste['1']})
 	# Wenn ein SternValue grösser ist.
 	if int(sterne) > 5:
 		return json.dumps({'fehler': fehlerliste['1']})
@@ -142,11 +145,14 @@ def set_rating(request, id, model, app_label, sterne):
 
 
 ######################## LIKES ########################
-
+# Like abfragen
 @login_required
 @dajaxice_register
 def get_like(request, id, model, app_label):
-	general = GetContent(model, app_label, id)
+	try:
+		general = GetContent(model, app_label, id)
+	except:
+		return json.dumps({'fehler':fehlerliste['1']})
 	status = False
 	try:
 		rating = Rating.objects.get(content_type__pk=general.model_type.id, object_id=general.content.id, user=request.user)
@@ -164,7 +170,7 @@ def set_like(request, id, model, app_label):
 	try:
 		content = content_type.get_object_for_this_type(id=id)
 	except:
-		return json.dumps({'message': "Produkt nicht vorhanden!"})
+		return json.dumps({'fehler': fehlerliste['3']})
 	model_type = ContentType.objects.get_for_model(content)
 
 	try:
@@ -236,7 +242,10 @@ def set_comment(request, id, model, app_label, comment):
 @login_required
 @dajaxice_register
 def profile_get_data(request, app_label, model):
-	general = GetContent(model, app_label)
+	try:
+		general = GetContent(model, app_label)
+	except:
+		return json.dumps({'fehler':fehlerliste['1']})
 	# Überprüfung, ob User ein Administrator ist
 	if not request.user.is_superuser:
 		user_ratings = Rating.objects.filter(user=request.user, content_type__model=general.model_type)
@@ -265,7 +274,7 @@ def profile_remove_rating(request, id):
 		rating.delete()
 	except:
 		return json.dumps({'message': "Kein Bewertungsbjekt mit dem ID: " + id})
-	return json.dumps({'message': "Gelöschte Bewertunsobjekt mit dem ID : " + id})
+	return json.dumps({'message': u"Gelöschte Bewertunsobjekt mit dem ID : " + id})
 
 
 # Bearbeitung einer Bewertung
@@ -289,13 +298,16 @@ def profile_edit_rating(request, id, comment):
 		rating.save()
 	except:
 		return json.dumps({'message': "Kein Bewertungsbjekt mit dem ID: " + id})
-	return json.dumps({'message': "Veränderte Bewertunsobjekt mit dem ID : " + id})
+	return json.dumps({'message': u"Veränderte Bewertunsobjekt mit dem ID : " + id})
 
 # Abfragen von den Produkten mit einem Like
 @login_required
 @dajaxice_register
 def get_like_list(request, app_label, model):
-	general = GetContent(model, app_label)
+	try:
+		general = GetContent(model, app_label)
+	except:
+		return json.dumps({'fehler':fehlerliste['1']})
 	user_like_ratings = Rating.objects.filter(user=request.user, content_type__model=general.model_type, likes=True)
 	products = general.model_class.objects.all()
 	# Daten werden in Variablen gespeichert und an Template übergeben
