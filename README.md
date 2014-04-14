@@ -22,7 +22,7 @@ http://django-dajaxice.readthedocs.org/en/latest/installation.html
 
 - Ohne South: `pythonX.X manage.py syncdb` um Rating App Tabellen zu erstellen.
 
-## Anleitung zur Einbindung des Rating-App ##
+## Anleitung zur Einbindung der Rating-App ##
 Die Rating App benützt *django-sekizai* um Static Files beim Template zu laden.
 - Fügen Sie `{% render_block "rating_css" %}` zwischen Head Tags hinzu.
 
@@ -33,6 +33,9 @@ Die Rating App benützt *django-sekizai* um Static Files beim Template zu laden.
 {% include "rating/rating.html" with model="beispiel_model" app_label="beispiel_label" id=object.id %}
 ```
 Vergessen Sie nicht **model** und **app_label** zu definieren.  Sie sind abhängig von Ihrer Applikation, deren Objekte schlussendlich bewertet werden.
+
+- Achten Sie darauf, dass ein Objekt, das bewertet sein soll, über ein Feld "name" verfügt.
+- Sie benö
 
 ## Vorraussetzungen und Abhängigkeiten ##
 - django
@@ -59,7 +62,7 @@ Keine. Ausbauvorschläge sind willkommen.
 - Bootstrap unabhängig machen
 - Mehrere Kommentare ermöglichen
 - Anzahl Sterne definieren
-- Einbindungsmäglichkeiten durch Custom Template Tag lösen
+- Einbindungsmöglichkeiten durch Custom Template Tag lösen
 
 ## Anbindungsmöglichkeiten ##
 Das Rating App kann in jedem Django Projekt verwendet werden. GenericForeignKeys sorgen für die nötige Flexibilität.

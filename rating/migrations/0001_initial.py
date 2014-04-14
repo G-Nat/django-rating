@@ -23,7 +23,7 @@ class Migration(SchemaMigration):
             ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'], null=True, blank=True)),
             ('ip', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['rating.UserIP'], null=True, blank=True)),
             ('kommentar', self.gf('djangocms_text_ckeditor.fields.HTMLField')(null=True, blank=True)),
-            ('sterne', self.gf('django.db.models.fields.IntegerField')(default=0, null=True, blank=True)),
+            ('sterne', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
             ('likes', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
         db.send_create_signal(u'rating', ['Eintrage'])
@@ -82,7 +82,7 @@ class Migration(SchemaMigration):
             'kommentar': ('djangocms_text_ckeditor.fields.HTMLField', [], {'null': 'True', 'blank': 'True'}),
             'likes': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'object_id': ('django.db.models.fields.PositiveIntegerField', [], {}),
-            'sterne': ('django.db.models.fields.IntegerField', [], {'default': '0', 'null': 'True', 'blank': 'True'}),
+            'sterne': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']", 'null': 'True', 'blank': 'True'})
         },
         u'rating.userip': {

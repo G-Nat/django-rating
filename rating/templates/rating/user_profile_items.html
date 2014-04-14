@@ -6,10 +6,20 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="rating_item bg-success">
-						<div class="col-md-6 no_padding">
+{#						<div class="col-md-2 no_padding">#}
+{#							<a href="{{ element.get_absolute_url }}">#}
+{#							</a>#}
+{#						</div>#}
+						<div class="col-md-12 no_padding">
+							<div class="actions btn-group-vertical pull-right">
+								<button type="button" class="remove_rating btn btn-danger" data-rating-id="{{ rating.id }}"><i class="fa fa-trash-o"></i></button>
+                                {% if rating.user %}
+								<button type="button" class="edit_rating btn btn-primary" data-rating-id="{{ rating.id }}" data-rating-text="{{ rating.kommentar }}"><i class="fa fa-pencil"></i></button>
+                                {% endif %}
+							</div>
 							<div class="details">
 								<a href="{{ element.get_absolute_url }}">
-									<h3 class="titel">{{ element.name }}</h3>
+									<h3 class="titel">{{ element.name }} | <span class="price">{{ element.price }} CHF</span></h3>
                                     <h3 class="titel">
                                         {% if user.is_superuser %}
                                             {% if rating.user.username %}
@@ -23,20 +33,12 @@
 								{% if rating.sterne >= 0 %}
 									<div class="stars">{% get_stars stars=rating.sterne %}</div>
 								{% endif %}
+								{% if rating.kommentar %}
+									<div class="comment">
+										<p><span>Kommentar:</span>{{ rating.kommentar }}</p>
+									</div>
+								{% endif %}
 							</div>
-						</div>
-						<div class="col-md-6 no_padding">
-							<div class="actions btn-group-vertical pull-right">
-								<button type="button" class="remove_rating btn btn-danger" data-rating-id="{{ rating.id }}"><i class="fa fa-trash-o"></i></button>
-                                {% if rating.user %}
-								<button type="button" class="edit_rating btn btn-primary" data-rating-id="{{ rating.id }}" data-rating-text="{{ rating.kommentar }}"><i class="fa fa-pencil"></i></button>
-                                {% endif %}
-							</div>
-                            {% if rating.kommentar %}
-                                <div class="comment">
-                                    <p><span>Kommentar:</span>{{ rating.kommentar }}</p>
-                                </div>
-                            {% endif %}
 						</div>
 						<div class="clearfix"></div>
 					</div>

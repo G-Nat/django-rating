@@ -62,31 +62,21 @@
 			init_click();
 		}
 
-// Like Status wird vom ajax.py geholt und an get_like function übergeben.
+//      Like Status wird vom ajax.py geholt und an get_like function übergeben.
 		function refresh_like() {
 			Dajaxice.rating.get_like(get_like, {'id': id, 'model': model, 'app_label': app_label});
 		}
-
+//
 		function get_like(data) {
 			status = data.like;
-            console.log(status);
-
 			set_hover();
 		}
-//
-//        //Klonen vom RatingInput um Datenanbindungen mit Attributen zu bewahren
-//	    var newInput = like.clone()
-//				.attr('value', status);
-//        console.log(newInput);
-//
-//        like.replaceWith(newInput);
-//         console.log(like);
 
-
+//      Aktuallisierungsfunktion vom Like
 		refresh_like();
 
 	};
-
+//  Funktion like wird beim Laden der Seite ausgeführt
 	$(function () {
 		$(".like").like();
 	});

@@ -36,10 +36,10 @@
 .user_ratings .rating_item .details .price {
   font-size: 15px;
 }
-.user_ratings .rating_item .details .glyphicon {
+.user_ratings .rating_item .details .fa {
   font-size: 20px;
   color: #fd5c28;
 }
-.user_ratings .rating_item .details .glyphicon-star-empty {
+.user_ratings .rating_item .details .fa-star-o {
   color: #fea98d;
 }

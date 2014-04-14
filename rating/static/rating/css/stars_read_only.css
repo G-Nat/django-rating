@@ -2,11 +2,11 @@
   text-align: center;
   margin-bottom: 10px;
 }
-.rating-input .glyphicon {
+.rating-input .fa {
   font-size: 20px;
   color: #fd5c28;
 }
-.rating-input .glyphicon-star-empty {
+.rating-input .fa-star-o {
   color: #fea98d;
 }
 .rating-input .thanks {

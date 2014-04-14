@@ -1,7 +1,7 @@
 {% load sekizai_tags thumbnail %}
 
 {% for element in products %}
-	{% for rating in user_ratings %}
+	{% for rating in user_like_ratings %}
 		{% if rating.object_id == element.id %}
 			<div class="row">
 				<div class="col-md-12">

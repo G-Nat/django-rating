@@ -9,9 +9,9 @@ def get_stars(stars):
 	star_list = ""
 	for star in range(6):
 		if stars > i:
-			star_list += '<span class="glyphicon glyphicon-star"></span>'
+			star_list += '<span class="fa fa-star"></span>'
 		else:
-			star_list += '<span class="glyphicon glyphicon-star-empty"></span>'
+			star_list += '<span class="fa fa-star-o"></span>'
 		i=i+1
 	return {
 		'star_list':star_list,
