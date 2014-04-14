@@ -17,12 +17,6 @@ fehlerliste = {
 	"3": "Produkt nicht vorhanden!",
 	"4": "Bitte ein Kommentar abgeben!",
 	"5": u"Anonyme User können keine Kommentare haben!",
-<<<<<<< HEAD
-
-=======
-	"6": "Fehler2",
->>>>>>> FETCH_HEAD
-
 }
 
 ### GENERAL ###
