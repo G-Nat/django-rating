@@ -17,6 +17,7 @@ setup(
     install_requires=[
         "django==1.6.2",
         "django-ipware",
+        "django-dajax",
         "django-sekizai",
     ],
 )
