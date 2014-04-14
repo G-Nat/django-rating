@@ -16,7 +16,7 @@ fehlerliste = {
 	"2": "Du willst zu hoch hinaus!",
 	"3": "Produkt nicht vorhanden!",
 	"4": "Bitte ein Kommentar abgeben!",
-	"5": "Anonyme User können keine Kommentare haben!",
+	"5": u"Anonyme User können keine Kommentare haben!",
 	"6": "Fehler2",
 
 }
@@ -265,7 +265,7 @@ def profile_remove_rating(request, id):
 		rating.delete()
 	except:
 		return json.dumps({'message': "Kein Bewertungsbjekt mit dem ID: " + id})
-	return json.dumps({'message': "Gelöschte Bewertunsobjekt mit dem ID : " + id})
+	return json.dumps({'message': u"Gelöschte Bewertunsobjekt mit dem ID : " + id})
 
 
 # Bearbeitung einer Bewertung
@@ -289,7 +289,7 @@ def profile_edit_rating(request, id, comment):
 		rating.save()
 	except:
 		return json.dumps({'message': "Kein Bewertungsbjekt mit dem ID: " + id})
-	return json.dumps({'message': "Veränderte Bewertunsobjekt mit dem ID : " + id})
+	return json.dumps({'message': u"Veränderte Bewertunsobjekt mit dem ID : " + id})
 
 # Abfragen von den Produkten mit einem Like
 @login_required
