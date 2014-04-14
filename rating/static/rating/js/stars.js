@@ -1,6 +1,5 @@
 (function ($) {
 	$.fn.rating = function () {
-		
 		// Initialisiere Variablen
 		var rating = $(".rating");
 		var id = rating.attr("data-id");
@@ -9,15 +8,13 @@
 		var	max = 5;
 		var	min = 0;
 		var starCount;
-
 		// Rating setzen
 		function set_rating(data){
-//          Feedback an User, wenn Produkt nicht existiert.
+			// Feedback an User, wenn Produkt nicht existiert.
 			if (data.fehler) {
 				alert(data.fehler);
 				return false;
 			}
-
 			// Div mit der Klasse "menge" wird durch Danke-span für kurze Zeit ersetzt
 			$(".menge").replaceWith("<span class='thanks'>Danke!</span>");
 			$(".thanks").fadeIn("slow");
@@ -27,19 +24,17 @@
 				});
 			}, 1500);
 		}
-
 		// Sterndaten holen
 		function refresh_stars() {
 			Dajaxice.rating.get_rating(get_rating, {'id': id, 'model': model, 'app_label': app_label});
 		}
-//      Funktion für Bewertungsanzeige
+		// Funktion für Bewertungsanzeige
 		function get_rating(data) {
-		// Anzahl der Bewertungen wird bei .menge hinzugefügt
+			// Anzahl der Bewertungen wird bei .menge hinzugefügt
 			$(".menge").text('(' + data.menge + ')');
 			// Aktuelle Bewertung
 			starCount = data.sterne;
 			paintValue($('.rating-input'), starCount);
-			console.log(starCount);
 		}
 
 		// Funktion zum Sterne highlighten auf übergebene Value bezogen.
@@ -53,7 +48,6 @@
 				clearValue(ratingInput);
 			}
 		}
-
 		// Löschen vom gewählten Bewertungsvolume
 		function clearValue(ratingInput) {
 			var self = $(ratingInput);
@@ -61,13 +55,10 @@
 			var input = self.find('input');
 			input.val(input.data('empty-value')).trigger('change');
 		}
-
 		// Generierung von rating-input DIV und Sternen
 		var starswrap, i;
 			originalInput = $(this);
-            console.log(originalInput);
 			stars = '';
-
 		// Die Sterne werden erzeugt
 		for (i = min; i <= max; i++) {
 			// Das Maximum vom Sterneanzahl wird als String generiert
@@ -78,10 +69,8 @@
 			'<div class="rating-input">',
 			stars,
 			'<span class="menge"></span></div>'].join('');
-        console.log(starswrap);
 		// Input wird durch starswrap ersetzt.
 		originalInput.replaceWith($(starswrap));
-
 		$('.rating-input')
 			// Highlight von Sternen bei drüberfahren
 			.on('mouseenter', '[data-value]', function () {
@@ -100,12 +89,10 @@
 				starCount = self.data('value');
 				Dajaxice.rating.set_rating(set_rating, {'id':id,'model':model,'app_label':app_label,'sterne':starCount});
 			})
-
 		refresh_stars();
 	};
-//  Rating Funktion wird beim Seitenladen ausgeführt.
+	// Rating Funktion wird beim Seitenladen ausgeführt.
 	$(function () {
 		$(".rating").rating();
 	});
-
 }(jQuery));
